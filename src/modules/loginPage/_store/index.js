@@ -3,13 +3,8 @@ import getters from '../_store/getters';
 import mutations from '../_store/mutations';
 
 const state = {
-  data: null,
-  search: "",
-  sortBy: [],
-  sortDirection: 'asc',
-  page: 1,
-  limit: 5,
-  total: null
+  tokenUser: sessionStorage.getItem("tokenUser") ? sessionStorage.getItem("tokenUser") : null,
+  currentUser: sessionStorage.getItem("currentUser") ? sessionStorage.getItem("currentUser") : null
 }
 
 export default {

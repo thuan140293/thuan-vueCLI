@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container-fluid px-0">
+    <div class="container">
       <Login />
     </div>
   </div>

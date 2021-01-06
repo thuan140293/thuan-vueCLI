@@ -1,17 +1,13 @@
 import _ from 'lodash'
 
-const getData = (state) => {
+const getCurrentUser = (state) => {
   var data = {};
-  if (state.data) {
-    data = _.map(state.data, (v) => {
-      return v;
-    });
-    data = _.filter(data, (o) => { return !o.isDelete });
-    data.data = data;
+  if (state.currentUser) {
+    data = _.cloneDeep(state.currentUser);
   }
   return data;
 };
 
 export default {
-  getData,
+    getCurrentUser,
 };

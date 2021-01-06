@@ -1,32 +1,18 @@
-const SET_DATA = (state, messages) => {
-    state.data = messages.data;
+const SET_TOKEN = (state, payload) => {
+    state.tokenUser = payload.token;
+    state.currentUser = payload.username;
+    sessionStorage.setItem("tokenUser", state.tokenUser);
+    sessionStorage.setItem("currentUser", state.currentUser);
 }
 
-const SET_DATA_NO_PAGING = (state, messages) => {
-    state.total = messages.data.length;
-}
-
-const SET_SEARCH = (state, messages) => {
-    state.search = messages
-};
-
-const SET_ORDERBY = (state, messages) => {
-    state.sortBy = messages;
-};
-
-const SET_ORDER_DIRECTION = (state, messages) => {
-    state.sortDirection = messages;
-};
-
-const DELETE_DATA = (state, messages) => {
-    state.data = messages;
+const REMOVE_TOKEN = (state) => {
+    sessionStorage.removeItem("tokenUser");
+    sessionStorage.removeItem("currentUser");
+    state.token = null;
+    state.currentUser = null;
 };
 
 export default{
-    SET_DATA,
-    SET_DATA_NO_PAGING,
-    SET_SEARCH,
-    SET_ORDERBY,
-    SET_ORDER_DIRECTION,
-    DELETE_DATA
+    SET_TOKEN,
+    REMOVE_TOKEN
 }
