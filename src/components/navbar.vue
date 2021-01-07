@@ -18,19 +18,13 @@
             </a>
           </router-link>
         </li>
-      </ul>{{currentUser}}
+      </ul>
       <ul class="navbar-nav ml-auto align-items-center justify-content-between">
-        <li class="nav-item d-flex align-items-center" v-for="(route, index) in commonRoute" :key="index">
-          <div v-if="currentUser">
-            <router-link :to="route.path" exact-active-class="active">
-                <a class="nav-link" v-if="route.name === 'loginPage'">
-                    {{ route.display }}
-                </a>
-            </router-link> 
-          </div>
-          <div v-else class="d-flex align-items-center">
-            <a class="nav-link">{{ currentUser ? currentUser : "" }}</a>
-            <a class="nav-link" @click="logout"> Đăng xuất </a>
+        <li><a v-if="!currentUser" @click="redirectTo('/login')">Đăng nhập</a></li>
+        <li>
+          <div class="d-flex align-items-center">
+            <a class="nav-link" v-if="currentUser">{{ currentUser ? currentUser : "" }}</a>
+            <a class="nav-link" v-if="currentUser" @click="logout"> Đăng xuất </a>
           </div>
         </li>
       </ul>

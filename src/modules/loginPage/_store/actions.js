@@ -2,7 +2,7 @@ import api from '../_api/index';
 
 const login = async (context, request) => {
   let response = await api.login(request);
-  context.commit('SET_TOKEN', response.data);
+  context.commit('SET_TOKEN', response);
 };
 
 const logout = async (context) => {

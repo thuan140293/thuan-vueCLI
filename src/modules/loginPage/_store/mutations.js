@@ -1,6 +1,6 @@
 const SET_TOKEN = (state, payload) => {
-    state.tokenUser = payload.token;
-    state.currentUser = payload.username;
+    state.tokenUser = payload.data.token;
+    state.currentUser = payload.config.data;
     sessionStorage.setItem("tokenUser", state.tokenUser);
     sessionStorage.setItem("currentUser", state.currentUser);
 }
