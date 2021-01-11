@@ -4,7 +4,6 @@ import mutations from '../_store/mutations';
 
 const state = {
   tokenUser: sessionStorage.getItem("tokenUser") ? sessionStorage.getItem("tokenUser") : null,
-  currentUser: sessionStorage.getItem("currentUser") ? sessionStorage.getItem("currentUser") : null
 }
 
 export default {

@@ -20,11 +20,11 @@
         </li>
       </ul>
       <ul class="navbar-nav ml-auto align-items-center justify-content-between">
-        <li><a v-if="!currentUser" @click="redirectTo('/login')">Đăng nhập</a></li>
+        <li><a v-if="!state.tokenUser" @click="redirectTo('/login')">Đăng nhập</a></li>
         <li>
           <div class="d-flex align-items-center">
-            <a class="nav-link" v-if="currentUser">{{ currentUser ? currentUser : "" }}</a>
-            <a class="nav-link" v-if="currentUser" @click="logout"> Đăng xuất </a>
+            <a class="nav-link" v-if="state.tokenUser">{{ state.tokenUser }}</a>
+            <a class="nav-link" v-if="state.tokenUser" @click="logout"> Đăng xuất </a>
           </div>
         </li>
       </ul>
@@ -58,7 +58,7 @@ export default {
       state: (state) => state.$_loginPage,
     }),
     ...mapGetters({
-      currentUser: "$_loginPage/getCurrentUser",
+      // currentUser: "$_loginPage/getCurrentUser",
     }),
   },
   created() {},
@@ -73,6 +73,7 @@ export default {
     async logout() {
       await this.$store.dispatch("$_loginPage/logout");
       this.$router.push("/login");
+      window.location.reload();
     },
   },
 };
@@ -93,6 +94,9 @@ export default {
 .navbar-brand {
   font-size: inherit;
   padding: 0;
+}
+.nav-link{
+  cursor: pointer;
 }
 .logo {
   width: 30px;
